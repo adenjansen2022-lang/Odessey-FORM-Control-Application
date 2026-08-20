@@ -25,5 +25,20 @@ namespace Form_summative_test_Practice
             this.Close();
             mainform.Show();
         }
+
+        private void Event_Log_Load(object sender, EventArgs e)
+        {
+            MissionClass.StatusChanged += LogMissionEvent;
+        }
+
+        private void LogMissionEvent(object sender, string message)
+        {
+            string timeStampMessage = $"[{DateTime.Now:HH:mm:ss}] {message}";
+            listBox1.Items.Add(timeStampMessage);
+        }
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

@@ -37,7 +37,6 @@
             this.btnSaveMember = new System.Windows.Forms.Button();
             this.textAssigned = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.txbType = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txbName = new System.Windows.Forms.TextBox();
             this.txbRole = new System.Windows.Forms.TextBox();
@@ -45,6 +44,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.cmbType = new System.Windows.Forms.ComboBox();
+            this.btnPerformDuty = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCrew)).BeginInit();
             this.groupBoxCrewDetails.SuspendLayout();
             this.SuspendLayout();
@@ -91,11 +92,12 @@
             // 
             // groupBoxCrewDetails
             // 
+            this.groupBoxCrewDetails.Controls.Add(this.btnPerformDuty);
+            this.groupBoxCrewDetails.Controls.Add(this.cmbType);
             this.groupBoxCrewDetails.Controls.Add(this.btnClear);
             this.groupBoxCrewDetails.Controls.Add(this.btnSaveMember);
             this.groupBoxCrewDetails.Controls.Add(this.textAssigned);
             this.groupBoxCrewDetails.Controls.Add(this.label6);
-            this.groupBoxCrewDetails.Controls.Add(this.txbType);
             this.groupBoxCrewDetails.Controls.Add(this.label5);
             this.groupBoxCrewDetails.Controls.Add(this.txbName);
             this.groupBoxCrewDetails.Controls.Add(this.txbRole);
@@ -106,14 +108,14 @@
             this.groupBoxCrewDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxCrewDetails.Location = new System.Drawing.Point(788, 41);
             this.groupBoxCrewDetails.Name = "groupBoxCrewDetails";
-            this.groupBoxCrewDetails.Size = new System.Drawing.Size(405, 366);
+            this.groupBoxCrewDetails.Size = new System.Drawing.Size(448, 366);
             this.groupBoxCrewDetails.TabIndex = 4;
             this.groupBoxCrewDetails.TabStop = false;
             this.groupBoxCrewDetails.Text = "Enter member detials";
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(158, 299);
+            this.btnClear.Location = new System.Drawing.Point(127, 299);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(120, 38);
             this.btnClear.TabIndex = 34;
@@ -123,7 +125,7 @@
             // 
             // btnSaveMember
             // 
-            this.btnSaveMember.Location = new System.Drawing.Point(19, 299);
+            this.btnSaveMember.Location = new System.Drawing.Point(6, 299);
             this.btnSaveMember.Name = "btnSaveMember";
             this.btnSaveMember.Size = new System.Drawing.Size(115, 38);
             this.btnSaveMember.TabIndex = 33;
@@ -146,13 +148,6 @@
             this.label6.Size = new System.Drawing.Size(119, 29);
             this.label6.TabIndex = 31;
             this.label6.Text = "assigned";
-            // 
-            // txbType
-            // 
-            this.txbType.Location = new System.Drawing.Point(109, 199);
-            this.txbType.Name = "txbType";
-            this.txbType.Size = new System.Drawing.Size(241, 34);
-            this.txbType.TabIndex = 30;
             // 
             // label5
             // 
@@ -211,6 +206,25 @@
             this.label7.TabIndex = 22;
             this.label7.Text = "id:";
             // 
+            // cmbType
+            // 
+            this.cmbType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbType.FormattingEnabled = true;
+            this.cmbType.Location = new System.Drawing.Point(109, 201);
+            this.cmbType.Name = "cmbType";
+            this.cmbType.Size = new System.Drawing.Size(241, 37);
+            this.cmbType.TabIndex = 35;
+            // 
+            // btnPerformDuty
+            // 
+            this.btnPerformDuty.Location = new System.Drawing.Point(253, 299);
+            this.btnPerformDuty.Name = "btnPerformDuty";
+            this.btnPerformDuty.Size = new System.Drawing.Size(182, 38);
+            this.btnPerformDuty.TabIndex = 36;
+            this.btnPerformDuty.Text = "Perform duty";
+            this.btnPerformDuty.UseVisualStyleBackColor = true;
+            this.btnPerformDuty.Click += new System.EventHandler(this.btnPerformDuty_Click);
+            // 
             // Crew
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -241,7 +255,6 @@
         private System.Windows.Forms.GroupBox groupBoxCrewDetails;
         private System.Windows.Forms.TextBox textAssigned;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txbType;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txbName;
         private System.Windows.Forms.TextBox txbRole;
@@ -251,5 +264,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnSaveMember;
+        private System.Windows.Forms.ComboBox cmbType;
+        private System.Windows.Forms.Button btnPerformDuty;
     }
 }

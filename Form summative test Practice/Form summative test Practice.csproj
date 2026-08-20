@@ -71,6 +71,7 @@
     <Compile Include="Mission.Designer.cs">
       <DependentUpon>Mission.cs</DependentUpon>
     </Compile>
+    <Compile Include="MissionClass.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SeniorClass.cs" />

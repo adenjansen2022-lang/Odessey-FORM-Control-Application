@@ -26,7 +26,11 @@ namespace Form_summative_test_Practice
         {
             groupBoxCrewDetails.Visible = false;
 
+            cmbType.Items.Clear();
             
+            cmbType.Items.Add("Senior Crew");
+            cmbType.Items.Add("Station Crew");
+
             dgvCrew.DataSource = crewList;
         }
 
@@ -53,44 +57,27 @@ namespace Form_summative_test_Practice
 
                 string name = txbName.Text.Trim();
                 string role = txbRole.Text.Trim();
-                string type = txbType.Text.Trim();
+                string SelectedType = cmbType.SelectedItem?.ToString();
                 if (string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(role))
                 {
                     MessageBox.Show("connot leave name or role empty");
                     return;
                 }
 
-                CrewClass newMember = null;
-
-                if (type.Equals("Senior Crew", StringComparison.OrdinalIgnoreCase))
+                if(string.IsNullOrWhiteSpace(SelectedType))
                 {
-                    if (!int.TryParse(textAssigned.Text, out int rankLevel))
-                    {
-                        MessageBox.Show("For Senior Crew, 'assigned' must be a numeric Rank Level.", "Input Error");
-                        return;
-                    }
-
-                    newMember = new SeniorClass(id, name, role, rankLevel);
-                }
-                else if (type.Equals("Station Crew", StringComparison.OrdinalIgnoreCase))
-                {
-                    if (string.IsNullOrWhiteSpace(textAssigned.Text))
-                    {
-                        MessageBox.Show("crew must be in a stattion location");
-                        return;
-                    }
-                    newMember = new StationCrewClass(id, name, role, textAssigned.Text);
-                }
-                else
-                {
-                    // Prevents null from being added to the BindingList
-                    MessageBox.Show("Type must be either 'Senior Crew' or 'Station Crew'.", "Input Error");
+                    MessageBox.Show("Please select a type from the dropdown.");
                     return;
                 }
 
-                crewList.Add(newMember);
-                btnClear_Click(sender, e);
-                groupBoxCrewDetails.Visible = false;
+                CrewClass newMember = CreateCrewMember(SelectedType,id,name, role, textAssigned.Text.Trim());
+
+                if (newMember != null) 
+                {
+                    crewList.Add(newMember);
+                    btnClear_Click(sender, e);
+                    groupBoxCrewDetails.Visible = false;
+                }    
                 
             }
             catch(ArgumentException ex)
@@ -99,13 +86,54 @@ namespace Form_summative_test_Practice
             }
         }
 
+        private CrewClass CreateCrewMember(string type, int id, string name, string role, string assigned)
+        {
+            if (type.Equals("Senior Crew", StringComparison.OrdinalIgnoreCase))
+            {
+                if (!int.TryParse(assigned, out int rankLevel))
+                {
+                    MessageBox.Show("For Senior Crew, 'assigned' must be a numeric Rank Level.", "Input Error");
+                    return null;
+                }
+                return new SeniorClass(id, name, role, rankLevel);
+            }
+            else if (type.Equals("Station Crew", StringComparison.OrdinalIgnoreCase))
+            {
+                if (string.IsNullOrWhiteSpace(assigned))
+                {
+                    MessageBox.Show("Station Crew must have a station location assigned.", "Input Error");
+                    return null;
+                }
+                return new StationCrewClass(id, name, role, assigned);
+            }
+            else
+            {
+                MessageBox.Show("Type must be either 'Senior Crew' or 'Station Crew'.", "Input Error");
+                return null;
+            }
+        }
+
+        
+
         private void btnClear_Click(object sender, EventArgs e)
         {
             txbID.Clear();
             txbName.Clear();
             txbRole.Clear();
-            txbType.Clear();
+            cmbType.SelectedIndex = -1;
             textAssigned.Clear();
+        }
+
+        private void btnPerformDuty_Click(object sender, EventArgs e)
+        {
+            if(dgvCrew.CurrentRow.DataBoundItem is CrewClass selectedCrew)
+            {
+                MessageBox.Show(selectedCrew.PerformDuty(), $"{selectedCrew.name}'s Duty");
+            }
+            else
+            {
+                MessageBox.Show("Please select a crew member from the list to perform duty.", "No Selection");
+            }
         }
     }
 }
