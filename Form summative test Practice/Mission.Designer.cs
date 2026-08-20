@@ -65,7 +65,6 @@
             this.label3.Size = new System.Drawing.Size(205, 16);
             this.label3.TabIndex = 2;
             this.label3.Text = "Event notification will appear here";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // btnUpdateStatus
             // 

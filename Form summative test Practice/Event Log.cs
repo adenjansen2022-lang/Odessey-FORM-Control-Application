@@ -28,13 +28,18 @@ namespace Form_summative_test_Practice
 
         private void Event_Log_Load(object sender, EventArgs e)
         {
+            //load all saved historical log entries into the listbox
+            foreach(string logEntry in MissionClass.EventHistory)
+            {
+                listBox1.Items.Add(logEntry);
+            }
+            //subscriber receives real time updates while this form is open
             MissionClass.StatusChanged += LogMissionEvent;
         }
 
         private void LogMissionEvent(object sender, string message)
         {
-            string timeStampMessage = $"[{DateTime.Now:HH:mm:ss}] {message}";
-            listBox1.Items.Add(timeStampMessage);
+            listBox1.Items.Add(message);
         }
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {

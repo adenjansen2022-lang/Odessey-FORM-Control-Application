@@ -13,14 +13,16 @@ namespace Form_summative_test_Practice
 {
     public partial class frmMain : Form
     {
+        internal BindingList<CrewClass> crewList { get; set; } = new BindingList<CrewClass>();
         public frmMain()
         {
             InitializeComponent();
+
+            crewList.Add(new SeniorClass(1, "James T. Kirk", "Captain", 5));
+            crewList.Add(new StationCrewClass(2, "Montgomery Scott", "Chief Engineer", "Engine Room"));
+            crewList.Add(new SeniorClass(3, "Spock", "First Officer", 4));
+            crewList.Add(new StationCrewClass(4, "Hikaru Sulu", "Helmsman", "Bridge Console 1"));
         }
-
-        
-
-        
 
         private void btnCrewManagement_Click(object sender, EventArgs e)
         {

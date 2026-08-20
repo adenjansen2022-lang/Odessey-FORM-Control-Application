@@ -15,7 +15,7 @@ namespace Form_summative_test_Practice
         private frmMain mainForm;
 
         
-        BindingList<CrewClass> crewList = new BindingList<CrewClass>();
+        
         public Crew(frmMain mainForm)
         {
             InitializeComponent();
@@ -26,12 +26,14 @@ namespace Form_summative_test_Practice
         {
             groupBoxCrewDetails.Visible = false;
 
+            
+
             cmbType.Items.Clear();
             
             cmbType.Items.Add("Senior Crew");
             cmbType.Items.Add("Station Crew");
 
-            dgvCrew.DataSource = crewList;
+            dgvCrew.DataSource = mainForm.crewList;
         }
 
         private void btnCloseCrew_Click(object sender, EventArgs e)
@@ -49,9 +51,11 @@ namespace Form_summative_test_Practice
         {
             try
             {
-                if (!int.TryParse(txbID.Text, out int id))
-                {
-                    MessageBox.Show("enter a numeric value");
+                int id = (int)numericUpDownId.Value;
+
+                bool idExists = mainForm.crewList.Any(c => c.id == id);
+                if (idExists) {
+                    MessageBox.Show("A crew member with this ID already exists.", "ID Already Exists");
                     return;
                 }
 
@@ -74,7 +78,7 @@ namespace Form_summative_test_Practice
 
                 if (newMember != null) 
                 {
-                    crewList.Add(newMember);
+                    mainForm.crewList.Add(newMember);
                     btnClear_Click(sender, e);
                     groupBoxCrewDetails.Visible = false;
                 }    
@@ -117,7 +121,7 @@ namespace Form_summative_test_Practice
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            txbID.Clear();
+            numericUpDownId.Value = numericUpDownId.Minimum;
             txbName.Clear();
             txbRole.Clear();
             cmbType.SelectedIndex = -1;

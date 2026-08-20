@@ -20,7 +20,6 @@ namespace Form_summative_test_Practice
             InitializeComponent();
             this.mainForm = mainForm;
         }
-
         
 
         private void btnCloseMission_Click(object sender, EventArgs e)
@@ -65,16 +64,15 @@ namespace Form_summative_test_Practice
                 MessageBox.Show("Please select a status.");
                 return;
             }
+
              MissionClass selectedMission = missions.Find(m => m.missionName == missionName);
+
              if (selectedMission != null)
              {
                  selectedMission.status = status;
              }
         }
 
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
+       
     }
 }

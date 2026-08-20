@@ -10,6 +10,8 @@ namespace Form_summative_test_Practice
     {
         private string _status;
         public static event EventHandler<string> StatusChanged;
+        //stores the history of events
+        public static List<string> EventHistory { get; } = new List<string>();
         public string missionName { get; set; }
         public string destination { get; set; }
         
@@ -22,6 +24,7 @@ namespace Form_summative_test_Practice
                 {
                     _status = value;
                     OnStatusChanged($"{missionName} status changed to {status}");
+                    EventHistory.Add($"{DateTime.Now:HH:mm:ss} - {missionName} status changed to {status}");
                 }
             }
         }

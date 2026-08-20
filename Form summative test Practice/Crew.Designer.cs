@@ -33,6 +33,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dgvCrew = new System.Windows.Forms.DataGridView();
             this.groupBoxCrewDetails = new System.Windows.Forms.GroupBox();
+            this.btnPerformDuty = new System.Windows.Forms.Button();
+            this.cmbType = new System.Windows.Forms.ComboBox();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnSaveMember = new System.Windows.Forms.Button();
             this.textAssigned = new System.Windows.Forms.TextBox();
@@ -40,14 +42,13 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txbName = new System.Windows.Forms.TextBox();
             this.txbRole = new System.Windows.Forms.TextBox();
-            this.txbID = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.cmbType = new System.Windows.Forms.ComboBox();
-            this.btnPerformDuty = new System.Windows.Forms.Button();
+            this.numericUpDownId = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCrew)).BeginInit();
             this.groupBoxCrewDetails.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownId)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCloseCrew
@@ -92,6 +93,7 @@
             // 
             // groupBoxCrewDetails
             // 
+            this.groupBoxCrewDetails.Controls.Add(this.numericUpDownId);
             this.groupBoxCrewDetails.Controls.Add(this.btnPerformDuty);
             this.groupBoxCrewDetails.Controls.Add(this.cmbType);
             this.groupBoxCrewDetails.Controls.Add(this.btnClear);
@@ -101,7 +103,6 @@
             this.groupBoxCrewDetails.Controls.Add(this.label5);
             this.groupBoxCrewDetails.Controls.Add(this.txbName);
             this.groupBoxCrewDetails.Controls.Add(this.txbRole);
-            this.groupBoxCrewDetails.Controls.Add(this.txbID);
             this.groupBoxCrewDetails.Controls.Add(this.label3);
             this.groupBoxCrewDetails.Controls.Add(this.label2);
             this.groupBoxCrewDetails.Controls.Add(this.label7);
@@ -112,6 +113,25 @@
             this.groupBoxCrewDetails.TabIndex = 4;
             this.groupBoxCrewDetails.TabStop = false;
             this.groupBoxCrewDetails.Text = "Enter member detials";
+            // 
+            // btnPerformDuty
+            // 
+            this.btnPerformDuty.Location = new System.Drawing.Point(253, 299);
+            this.btnPerformDuty.Name = "btnPerformDuty";
+            this.btnPerformDuty.Size = new System.Drawing.Size(182, 38);
+            this.btnPerformDuty.TabIndex = 36;
+            this.btnPerformDuty.Text = "Perform duty";
+            this.btnPerformDuty.UseVisualStyleBackColor = true;
+            this.btnPerformDuty.Click += new System.EventHandler(this.btnPerformDuty_Click);
+            // 
+            // cmbType
+            // 
+            this.cmbType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbType.FormattingEnabled = true;
+            this.cmbType.Location = new System.Drawing.Point(109, 201);
+            this.cmbType.Name = "cmbType";
+            this.cmbType.Size = new System.Drawing.Size(241, 37);
+            this.cmbType.TabIndex = 35;
             // 
             // btnClear
             // 
@@ -172,13 +192,6 @@
             this.txbRole.Size = new System.Drawing.Size(241, 34);
             this.txbRole.TabIndex = 26;
             // 
-            // txbID
-            // 
-            this.txbID.Location = new System.Drawing.Point(109, 79);
-            this.txbID.Name = "txbID";
-            this.txbID.Size = new System.Drawing.Size(241, 34);
-            this.txbID.TabIndex = 25;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -206,24 +219,17 @@
             this.label7.TabIndex = 22;
             this.label7.Text = "id:";
             // 
-            // cmbType
+            // numericUpDownId
             // 
-            this.cmbType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbType.FormattingEnabled = true;
-            this.cmbType.Location = new System.Drawing.Point(109, 201);
-            this.cmbType.Name = "cmbType";
-            this.cmbType.Size = new System.Drawing.Size(241, 37);
-            this.cmbType.TabIndex = 35;
-            // 
-            // btnPerformDuty
-            // 
-            this.btnPerformDuty.Location = new System.Drawing.Point(253, 299);
-            this.btnPerformDuty.Name = "btnPerformDuty";
-            this.btnPerformDuty.Size = new System.Drawing.Size(182, 38);
-            this.btnPerformDuty.TabIndex = 36;
-            this.btnPerformDuty.Text = "Perform duty";
-            this.btnPerformDuty.UseVisualStyleBackColor = true;
-            this.btnPerformDuty.Click += new System.EventHandler(this.btnPerformDuty_Click);
+            this.numericUpDownId.Location = new System.Drawing.Point(109, 79);
+            this.numericUpDownId.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
+            this.numericUpDownId.Name = "numericUpDownId";
+            this.numericUpDownId.Size = new System.Drawing.Size(241, 34);
+            this.numericUpDownId.TabIndex = 37;
             // 
             // Crew
             // 
@@ -241,6 +247,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvCrew)).EndInit();
             this.groupBoxCrewDetails.ResumeLayout(false);
             this.groupBoxCrewDetails.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownId)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -258,7 +265,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txbName;
         private System.Windows.Forms.TextBox txbRole;
-        private System.Windows.Forms.TextBox txbID;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label7;
@@ -266,5 +272,6 @@
         private System.Windows.Forms.Button btnSaveMember;
         private System.Windows.Forms.ComboBox cmbType;
         private System.Windows.Forms.Button btnPerformDuty;
+        private System.Windows.Forms.NumericUpDown numericUpDownId;
     }
 }
